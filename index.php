@@ -41,11 +41,6 @@ if (!empty($_POST)) {
         $_SESSION['user']['department'] = $_POST['department'];
     }
 
-    if (($_POST["address"]) == '') {
-        $errors = $errors . '<div class="text-danger">Hãy nhập địa chỉ.</div>';
-    } else {
-        $_SESSION['user']['address'] = $_POST['address'];
-    }
 
     if (($_POST["birthday"]) == '') {
         $errors = $errors . '<div class="text-danger">Hãy nhập ngày sinh.<br></div>';
@@ -57,11 +52,9 @@ if (!empty($_POST)) {
         $_SESSION['user']['birthday'] = $_POST['birthday'];
     }
 
-    if ($img == '') {
-        $errors = $errors . '<div class="text-danger">Hãy nhập ảnh.<br></div>';
-    } else {
-        $_SESSION['user']['image'] = $img;
-    }
+    $_SESSION['user']['address'] = $_POST['address'];
+
+    $_SESSION['user']['image'] = $img;
 
     //kiểm tra nếu nhập đủ dữ liệu thì mới sang màn confirm
     if (count($_SESSION['user']) == 6) {
@@ -209,7 +202,7 @@ if (!empty($_POST)) {
             </label>
             <input type="text" class="text-field" name="address">
         </div>
-        <div class="input-box">
+        <div class="input-box" style="display: flex;">
             <label for="" class="text-label">
                 Hình ảnh
             </label>

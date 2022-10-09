@@ -31,7 +31,7 @@ if (!empty($_POST)) {
         justify-content: center;
     }
 
-    .register {
+    .confirm {
         margin-top: 50px;
         border: 1px solid #41719c;
         display: inline-block;
@@ -39,6 +39,7 @@ if (!empty($_POST)) {
     }
 
     .input-box {
+        display: flex;
         margin-bottom: 10px;
     }
 
@@ -47,7 +48,6 @@ if (!empty($_POST)) {
         color: white;
         background-color: #70ad47;
         padding: 5px 7px;
-        display: inline-block;
         width: 110px;
         text-align: center;
         margin-right: 10px;
@@ -67,59 +67,35 @@ if (!empty($_POST)) {
         margin-top: 10px;
     }
 
-    .text-field {
-        height: 30px;
-        border: 1px solid #41719c;
-        width: 250px;
-    }
-
-    .select-field {
-        height: 30px;
-        border: 1px solid #41719c;
-    }
-
-    .text-danger {
-        color: red;
-    }
-
-    .input-group {
-        width: 150px;
-        float: right;
-        margin-right: 100px;
-    }
 
     /* Create a custom radio button */
 </style>
 <!-- end style -->
 
 <body>
-<div class="register">
+<div class="confirm">
     <form action="" enctype="multipart/form-data" method="post">
         <div class="input-box">
             <label for="" class="text-label">
                 Họ và tên
-                <span class="text-danger">*</span>
             </label>
             <p><?php echo $_SESSION['user']['name'] ?></p>
         </div>
         <div class="input-box">
             <label for="" class="text-label">
                 Giới tính
-                <span class="text-danger">*</span>
             </label>
             <p><?php echo $_SESSION['user']['gender'] ?></p>
         </div>
         <div class="input-box">
             <label for="department" class="text-label">
                 Phân khoa
-                <span class="text-danger">*</span>
             </label>
             <p><?php echo $_SESSION['user']['department'] ?></p>
         </div>
         <div class="input-box">
             <label for="" class="text-label">
                 Ngày sinh
-                <span class="text-danger">*</span>
             </label>
             <p><?php echo $_SESSION['user']['birthday'] ?></p>
         </div>
@@ -133,7 +109,11 @@ if (!empty($_POST)) {
             <label for="" class="text-label">
                 Hình ảnh
             </label>
-            <img src="<?php echo 'uploads/' . $_SESSION['user']['image'] ?>">
+            <?php
+            if ($_SESSION['user']['image'] != '') {
+                echo '<img width="250" height="150" src="uploads/' . $_SESSION['user']['image'] . '">';
+            }
+            ?>
         </div>
         <div class="btn">
             <button class="btn-submit" type="submit" name="submit">Xác nhận</button>
