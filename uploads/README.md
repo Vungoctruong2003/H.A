@@ -1,0 +1,1 @@
+Ảnh để sau khi upload lên sẽ có trong thư mục này
